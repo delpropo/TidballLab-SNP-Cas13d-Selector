@@ -1,3 +1,18 @@
+# Pipeline Objectives
+
+## Overview
+This pipeline identifies heterozygous SNPs in coding and 3' UTR regions and designs optimal Cas13d gRNAs for each SNP, outputting a filterable Excel table.
+
+## Objective
+
+- **Input:**
+  *100x WGS (short and linked reads), VCF, human reference (GRCh38), comprehensive GTF annotation.*
+- **Task:**
+  *Identify all heterozygous SNPs in CDS and 3’ UTR regions genome-wide. For each SNP, output the highest-scoring Cas13d gRNA that overlaps the SNP (with the SNP ideally in the last 10 bp).*
+- **Output:**
+  *Single Excel with one row per SNP/gRNA, filterable by gene.*
+
+
 # Snakemake workflow: `<name>`
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥8.0.0-brightgreen.svg)](https://snakemake.github.io)
@@ -13,6 +28,14 @@ A Snakemake workflow for `<description>`
   - [Authors](#authors)
   - [References](#references)
   - [TODO](#todo)
+
+# TidballLab-SNP-Cas13d-Selector
+
+<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
+    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
+</a>
+
+
 
 ## Usage
 
@@ -56,6 +79,44 @@ snakemake --cores 2 --sdm conda apptainer --directory .test
   - Affiliation
   - ORCID profile
   - home page
+
+
+## Project Organization
+
+```
+├── LICENSE                  <- Open-source license
+├── README.md                <- Project overview and instructions
+├── .gitignore               <- Git ignore file
+├── config/                  <- Workflow and project configuration
+│   ├── config.yaml          <- Main config file
+│   ├── README.md            <- Config documentation
+│   └── schemas/             <- YAML schemas for config validation
+│       ├── config.schema.yaml
+│       └── samples.schema.yaml
+│
+├── data/                    <- Data directory
+│   └── ...                  <- Raw, processed, and other data as needed
+│
+├── docs/                    <- Documentation (optionally for MkDocs)
+│
+├── workflow/                <- Snakemake workflow files
+│   ├── Snakefile            <- Main workflow file
+│   ├── envs/                <- Conda environment YAMLs
+│   ├── rules/               <- Snakemake rules
+│   ├── scripts/             <- Workflow scripts (Python, etc.)
+│
+├── src/                     <- Main Python source code
+│   └── tidball_snp_selector/     <- Python package for project logic
+│       ├── __init__.py      <- Makes cas13d_selector a Python module
+│       └── ...              <- Additional Python modules
+│
+├── tests/                   <- Unit and integration tests
+│   └── ...
+│
+├── environment.yml          <- Conda environment specification
+├── requirements.txt         <- Python package requirements (pip)
+└── pyproject.toml           <- Project metadata and configuration
+```
 
 ## References
 

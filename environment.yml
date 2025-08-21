@@ -1,0 +1,12 @@
+name: tidballlab-snp-cas13d-selector
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - ruff
+  - pytest
+  - pip:
+    - python-dotenv
+    - mkdocs
+    - -e .
